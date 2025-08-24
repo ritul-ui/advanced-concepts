@@ -1,39 +1,27 @@
-import { useState, startTransition } from "react";
+import { useState, useCallback } from "react";
+import Header from "./Header";
+import Count from "./Count";
+import Button from "./Button";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [counter1, setCounter1] = useState(0);
+  const [counter2, setCounter2] = useState(0);
 
-  const performSearch = (query) => {
-    // Simulate a search operation with a delay
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const data = ["apple", "banana", "orange", "grape", "kiwi"];
-        const filteredData = data.filter((item) => item.includes(query));
-        resolve(filteredData);
-      }, 4000); // Simulating a delay of 1 second
-    });
-  };
+  const incrementCounter1 = useCallback(() => {
+    setCounter1(counter1 + 1);
+  }, [counter1]);
 
-  const handleChange = async (event) => {
-    const newQuery = event.target.value;
-    // Start a transition for the state update
-    startTransition(async () => {
-    // Simulate a search operation
-    console.log(event.target.value);
-    const filteredResults = await performSearch(newQuery);
-    setResults(filteredResults);
-    });
-    setQuery(newQuery);
-  };
+  const incrementCounter2 = useCallback(() => {
+    setCounter2(counter2 + 1);
+  }, [counter2]);
 
   return (
     <div className="App">
-      <input value={query} onChange={handleChange} />
-      <ul>
-        {results &&
-          results.map((result, index) => <li key={index}>{result}</li>)}
-      </ul>
+      <Header />
+      <Count text="Counter 1" count={counter1} />
+      <Button onClick={incrementCounter1} text="Increment Counter 1" />
+      <Count text="Counter 2" count={counter2} />
+      <Button onClick={incrementCounter2} text="Increment Counter 2" />
     </div>
   );
 }
