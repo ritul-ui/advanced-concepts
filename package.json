@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "express": "^5.1.0",
     "ignore-styles": "^5.0.1",
+    "path-to-regexp": "^8.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-scripts": "^0.0.0",
@@ -40,5 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^9.34.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0"
   }
 }

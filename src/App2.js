@@ -22,6 +22,8 @@ function App() {
       <Button onClick={incrementCounter1} text="Increment Counter 1" />
       <Count text="Counter 2" count={counter2} />
       <Button onClick={incrementCounter2} text="Increment Counter 2" />
+      {/* render again as function is created again  */}
+      {/* to avoid re-render we use useCallback  */}
     </div>
   );
 }
